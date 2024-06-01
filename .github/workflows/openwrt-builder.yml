@@ -20,12 +20,13 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: .config2
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  KERTNEL_VERSION: 1d96ca70bfceb821bd08f90f3ad50af03b9cb81a
   TZ: Asia/Shanghai
 
 jobs:
@@ -61,7 +62,11 @@ jobs:
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
+        wget https://github.com/vernesong/OpenClash/archive/master.zip
+        unzip master.zip
+        cp -r OpenClash-master/luci-app-openclash openwrt/package
         cd openwrt
+        git checkout $KERTNEL_VERSION
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: Update feeds
