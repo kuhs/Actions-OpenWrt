@@ -26,7 +26,7 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
-  KERTNEL_VERSION: fd8808e40342da9f4cc27d657920fc1dd8637b34
+  KERTNEL_VERSION: 1d96ca70bfceb821bd08f90f3ad50af03b9cb81a
   TZ: Asia/Shanghai
 
 jobs:
